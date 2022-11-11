@@ -40,7 +40,7 @@ int main( void )
   char   buffer[256 ] = { 0 };
   struct tm timeStruct = { 0 };
 
-  sprintf( buffer, "%d", localTime );
+  sprintf( buffer, "%ld", localTime );
   localTime = 0;
   strptime( buffer, "%s", &timeStruct );
   memset( buffer, 0, sizeof( buffer ) );
