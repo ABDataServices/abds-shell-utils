@@ -37,4 +37,4 @@ jobs:
         # Since the action runs utc, it can't invert 0 * -1)
         #if (( $(expr $(date +"%:::z") \* 3600 \* -1) == $(./abdstmzn) )) ; then exit 0 ; else exit 1; fi
       run: |
-        if (( $(./abdsppid) == ${PPID} )) ; then exit 0 ; else exit 1 ; fi
+        if (( $(./abdsppid) == ${PPID} )) ; then echo 0 ; else echo 1 ; fi
