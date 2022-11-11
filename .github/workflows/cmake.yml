@@ -35,6 +35,6 @@ jobs:
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       #run: ctest -C ${{env.BUILD_TYPE}}
       run: |
-        echo -e "$(date +"%:::z")"
-        if (( $(expr $(date +"%:::z") \* 3600 \* -1) == $(./abdstmzn) )) ; then exit 0 ; else exit 1; fi
+        # Since the action runs utc, it can't invert 0 * -1)
+        #if (( $(expr $(date +"%:::z") \* 3600 \* -1) == $(./abdstmzn) )) ; then exit 0 ; else exit 1; fi
         if (( $(./abdsppid) == ${PPID} )) ; then exit 0 ; else exit 1 ; fi
