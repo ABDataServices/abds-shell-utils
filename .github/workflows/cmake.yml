@@ -36,4 +36,4 @@ jobs:
       #run: ctest -C ${{env.BUILD_TYPE}}
       run: |
         if (( $(expr $(date +"%:::z") \* 3600 \* -1) == $(./abdstmzn) )) ; then echo "pass" ; else echo "fail"; fi
-        if (( $(./abdsppid) == $(ps -ef | grep ${MY_TTY} | grep bash | awk '{ if ( $8 == "/bin/bash" ) print $2 }' | head -1 ) )) ; then echo "pass" ; else echo "fail" ; fi
+        if (( $(./abdsppid) == ${PPID} )) ; then echo "pass" ; else echo "fail" ; fi
