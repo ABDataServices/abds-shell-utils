@@ -1,0 +1,29 @@
+Use UI
+
+ShowLn "          SYSCONF_OS_NAME = " ( SysConf( SYSCONF_OS_NAME ) )
+ShowLn "    SYSCONF_OS_SHORT_NAME = " ( SysConf( SYSCONF_OS_SHORT_NAME ) )
+ShowLn "     SYSCONF_OS_MAJOR_REV = " ( SysConf( SYSCONF_OS_MAJOR_REV ) )
+ShowLn "     SYSCONF_OS_MINOR_REV = " ( SysConf( SYSCONF_OS_MINOR_REV ) )
+ShowLn " SYSCONF_TIMER_RESOLUTION = " ( SysConf( SYSCONF_TIMER_RESOLUTION ) )
+ShowLn "    SYSCONF_DIR_SEPARATOR = " ( SysConf( SYSCONF_DIR_SEPARATOR ) )
+ShowLn "   SYSCONF_PATH_SEPARATOR = " ( SysConf( SYSCONF_PATH_SEPARATOR ) )
+ShowLn "     SYSCONF_MACHINE_NAME = " ( SysConf( SYSCONF_MACHINE_NAME ) )
+ShowLn "        SYSCONF_FILE_MASK = " ( SysConf( SYSCONF_FILE_MASK ) )
+ShowLn "     SYSCONF_DATAFLEX_REV = " ( SysConf( SYSCONF_DATAFLEX_REV ) )
+ShowLn "      SYSCONF_SYSTEM_NAME = " ( SysConf( SYSCONF_SYSTEM_NAME ) )
+ShowLn "     SYSCONF_RUNTIME_NAME = " ( SysConf( SYSCONF_RUNTIME_NAME ) )
+ShowLn "  SYSCONF_UTC_TIME_OFFSET = " ( SysConf( SYSCONF_UTC_TIME_OFFSET ) )
+
+String sPpid
+Get_Environment "PID" to sPpid
+ShowLn "          Environment PID = " sPpid
+Get_Environment "PPID" to sPpid
+ShowLn "         Environment PPID = " sPpid
+Set Right_Margin of clipboard to 4096
+RunProgram Pipe "./build/abdsppid" clipboard
+ShowLn "          abdsppid output = " (Value(ClipBoard, 0))
+Set Value of ClipBoard Item 0 to ""
+RunProgram Pipe "./build/abdstmzn" clipboard
+Show   "          abdstmzn output = " (Trim(Value(ClipBoard, 0)))
+Inkey fieldindex
+abort
